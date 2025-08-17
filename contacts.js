@@ -1,9 +1,27 @@
-const mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
+const Contact = require('../models/Contact');
 
-const ContactSchema = new mongoose.Schema({
-  prenom: { type: String, required: true },
-  numero: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now }
+// Enregistrer un contact
+router.post('/', async (req, res) => {
+  try {
+    const { prenom, numero } = req.body;
+    const newContact = new Contact({ prenom, numero });
+    await newContact.save();
+    res.status(201).json({ success: true, message: "✅ Contact enregistré !" });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
 });
 
-module.exports = mongoose.model('Contact', ContactSchema);
+// Récupérer tous les contacts (pour admin)
+router.get('/', async (req, res) => {
+  try {
+    const contacts = await Contact.find();
+    res.status(200).json(contacts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+module.exports = router;
