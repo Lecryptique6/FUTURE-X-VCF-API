@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCF Tool Contact Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>🚀 FUTURE-X VCF COLLECTION</h2>
+        <p>La révolution en diffusion ! 🤖</p>
+        
+        <div class="success-message" id="successMessage">
+            ✅ Contact ajouté avec succès !
+        </div>
+
+        <div class="error-message" id="errorMessage">
+            ❌ Une erreur s'est produite
+        </div>
+
+        <!-- Dashboard Statistiques -->
+        <div class="dashboard">
+            <div class="stat-card target">
+                <span class="stat-number" id="targetCount">100</span>
+                <div class="stat-label">Contacts Cibles</div>
+            </div>
+            <div class="stat-card registered">
+                <span class="stat-number" id="registeredCount">0</span>
+                <div class="stat-label">Déjà Enregistrés</div>
+            </div>
+            <div class="stat-card remaining">
+                <span class="stat-number" id="remainingCount">100</span>
+                <div class="stat-label">Restants</div>
+            </div>
+        </div>
+
+        <!-- Barre de progression -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+        </div>
+        <div class="progress-text" id="progressText">0% complété</div>
+
+        <form id="contactForm">
+            <div class="form-group">
+                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="numero" name="numero" placeholder="Numéro (ex: +237682605666)" required>
+            </div>
+            
+            <button type="submit" class="button" id="submitBtn">
+                💾 Enregistrer
+            </button>
+        </form>
+        
+        <button class="button secondary" onclick="window.open('https://chat.whatsapp.com/LwRnUPzzni5BI99iT3okAZ?mode=ac_t', '_blank')">
+            📲 Rejoindre le groupe WhatsApp
+        </button>
+        
+        <p class="small-note">
+            💡 Rejoignez le groupe WhatsApp pour recevoir des fichiers de contacts à enregistrement automatique ✅
+        </p>
+    </div>
+
+    <footer>
+        © 2025 FUTURE-X VCF COLLECTION. By LECRYPTIQUE <br>
+        <a href="https://mon-contact.vercel.app/" target="_blank">Me contacter</a>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
